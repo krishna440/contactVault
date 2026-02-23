@@ -1,0 +1,125 @@
+<div data-th-fragment="contact">
+
+<div id="view_contact_modal"
+class="hidden fixed inset-0 z-[9999] flex justify-center items-center bg-black/60 backdrop-blur-sm">
+
+  <div id="modal_container"
+  class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full max-w-md p-6 relative transform scale-95 opacity-0 transition-all duration-300">
+
+    <!-- Close -->
+    <button onclick="closeContactModal()"
+      class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-xl">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Skeleton Loader -->
+    <div id="modal_loader" class="animate-pulse">
+
+      <div class="flex flex-col items-center">
+
+        <div class="w-24 h-24 bg-gray-300 rounded-full mb-4"></div>
+
+        <div class="h-4 bg-gray-300 rounded w-32 mb-2"></div>
+        <div class="h-3 bg-gray-300 rounded w-48 mb-2"></div>
+
+      </div>
+
+    </div>
+
+    <!-- Actual Content -->
+    <div id="modal_content" class="hidden">
+
+      <!-- Profile -->
+      <div class="flex flex-col items-center">
+
+        <img id="contact_image"
+          class="w-24 h-24 rounded-full border-4 border-blue-500 shadow-md object-cover mb-3">
+
+        <h2 id="contact_name"
+          class="text-xl font-semibold text-gray-800 dark:text-white">
+        </h2>
+
+        <p id="contact_email_top"
+          class="text-gray-500 text-sm">
+        </p>
+
+        <p id="contact_phone"
+          class="text-gray-500 text-sm mb-3">
+        </p>
+
+      </div>
+
+      <!-- Quick actions -->
+      <div class="flex justify-center gap-4 mb-4">
+
+        <a id="contact_call"
+          class="p-2 bg-green-500 text-white rounded-full hover:bg-green-600">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+
+        <a id="contact_email_btn"
+          class="p-2 bg-red-500 text-white rounded-full hover:bg-red-600">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+
+        <a id="contact_whatsapp"
+          class="p-2 bg-green-600 text-white rounded-full hover:bg-green-700">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+
+      <hr class="my-4 border-gray-300 dark:border-gray-700">
+
+      <!-- Details -->
+      <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+
+        <div class="flex gap-3">
+          <i class="fa-solid fa-location-dot text-blue-500"></i>
+          <span id="contact_address"></span>
+        </div>
+
+        <div class="flex gap-3">
+          <i class="fa-solid fa-user text-purple-500"></i>
+          <span id="contact_description"></span>
+        </div>
+
+        <div class="flex gap-3">
+          <i class="fa-solid fa-globe text-indigo-500"></i>
+          <a id="contact_website" class="text-blue-500 hover:underline"></a>
+        </div>
+
+        <div class="flex gap-3">
+          <i class="fa-brands fa-linkedin text-blue-700"></i>
+          <a id="contact_linkedin" class="text-blue-500 hover:underline"></a>
+        </div>
+
+      </div>
+
+      <!-- Actions -->
+      <div class="flex justify-center gap-3 mt-6">
+
+        <button id="contact_edit_btn"
+          class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+          <i class="fa-solid fa-pen"></i> Edit
+        </button>
+
+        <button id="contact_delete_btn"
+          class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+          <i class="fa-solid fa-trash"></i> Delete
+        </button>
+
+        <button onclick="closeContactModal()"
+          class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>

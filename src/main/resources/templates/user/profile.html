@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"
+      th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+    <title th:text="${loggedInUser.name} + ' | Profile'">Profile</title>
+</head>
+
+<body>
+
+<div id="content">
+
+    <!-- Sidebar -->
+    <div th:if="${loggedInUser}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="sm:pl-64 pt-20 px-6">
+
+        <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+
+            <!-- Header -->
+            <div class="flex items-center space-x-6">
+
+                <!-- Profile Image -->
+                <img th:src="${loggedInUser.profilePic != null ? loggedInUser.profilePic : '/images/default.jpg'}"
+                     class="w-28 h-28 rounded-full border shadow">
+
+                <!-- Basic Info -->
+                <div>
+
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white"
+                        th:text="${loggedInUser.name}">
+                        User Name
+                    </h2>
+
+                    <p class="text-gray-500"
+                       th:text="${loggedInUser.email}">
+                        user@email.com
+                    </p>
+
+                    <span class="inline-block mt-2 px-3 py-1 text-sm rounded-full"
+                          th:classappend="${loggedInUser.enabled ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+
+                        <span th:text="${loggedInUser.enabled} ? 'Active' : 'Disabled'"></span>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Divider -->
+            <hr class="my-6 border-gray-300 dark:border-gray-600">
+
+
+            <!-- Details Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Phone -->
+                <div>
+                    <label class="font-semibold text-gray-600 dark:text-gray-300">
+                        Phone Number
+                    </label>
+
+                    <p class="text-lg text-gray-800 dark:text-white"
+                       th:text="${loggedInUser.phoneNumber != null ? loggedInUser.phoneNumber : 'Not provided'}">
+                    </p>
+                </div>
+
+
+                <!-- Provider -->
+                <div>
+                    <label class="font-semibold text-gray-600 dark:text-gray-300">
+                        Account Provider
+                    </label>
+
+                    <p class="text-lg text-gray-800 dark:text-white"
+                       th:text="${loggedInUser.provider}">
+                    </p>
+                </div>
+
+
+                <!-- Email Verified -->
+                <div>
+                    <label class="font-semibold text-gray-600 dark:text-gray-300">
+                        Email Verified
+                    </label>
+
+                    <p class="text-lg"
+                       th:classappend="${loggedInUser.emailVerified ? 'text-green-600' : 'text-red-600'}"
+                       th:text="${loggedInUser.emailVerified} ? 'Yes' : 'No'">
+                    </p>
+                </div>
+
+
+                <!-- Phone Verified -->
+                <div>
+                    <label class="font-semibold text-gray-600 dark:text-gray-300">
+                        Phone Verified
+                    </label>
+
+                    <p class="text-lg"
+                       th:classappend="${loggedInUser.phoneVerified ? 'text-green-600' : 'text-red-600'}"
+                       th:text="${loggedInUser.phoneVerified} ? 'Yes' : 'No'">
+                    </p>
+                </div>
+
+
+                <!-- About -->
+                <div class="md:col-span-2">
+
+                    <label class="font-semibold text-gray-600 dark:text-gray-300">
+                        About
+                    </label>
+
+                    <p class="text-gray-800 dark:text-white"
+                       th:text="${loggedInUser.about != null ? loggedInUser.about : 'No description'}">
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Divider -->
+            <hr class="my-6 border-gray-300 dark:border-gray-600">
+
+
+            <!-- Action Buttons -->
+            <div class="flex space-x-4">
+
+                <a href="#"
+                   class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+
+                    Edit Profile
+
+                </a>
+
+
+                <a th:href="@{/user/change-password}"
+                   class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+
+                    Change Password
+
+                </a>
+
+
+                <a th:href="@{/do-logout}"
+                   class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+
+                    Logout
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    console.log("Profile Page Loaded");
+</script>
+
+</body>
+</html>
